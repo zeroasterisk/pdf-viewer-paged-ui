@@ -47,22 +47,13 @@ function renderPageMeta(conf) {
 
 
 const renderTaskPageLoaded = (page) => {
-  console.log('page loaded', page);
   const conf = getConf();
-  const { canvas, scale, ctx } = conf;
-  const viewportPdfDoc = page.getViewport(scale);
-  const viewportPdf = {
-    height: viewportPdfDoc.height,
-    width: viewportPdfDoc.width,
-  };
-  const viewportPage = {
-    height: $(window).height(),
-    width: $(window).width(),
-  };
-  console.log('pdf viewport', viewportPdf);
-  console.log('page viewport', viewportPage);
-  // const viewport = viewportPage;
-  const viewport = viewportPdf;
+  const { canvas, ctx } = conf;
+  const height = $(window).height() - 10;
+  const viewportUnsized = page.getViewport(1);
+  // const viewportHeight = viewportUnsized.height;
+  const scale = 0.95 * (height / viewportUnsized.height);
+  const viewport = page.getViewport(scale);
   // make the canvas fit the pdf viewport
   canvas.height = viewport.height;
   canvas.width = viewport.width;
@@ -143,7 +134,6 @@ function onNextPage() {
  */
 function main() {
   const conf = setConf(buildConf());
-  console.log('main-->', conf);
   // eslint-disable-next-line no-undef
   PDFJS.getDocument(conf.pdfUrl).then(pdfDocObject => {
     conf.pdfDoc = pdfDocObject;

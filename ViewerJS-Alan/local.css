@@ -28,9 +28,11 @@
 /* just to be sure these are full screen*/
 html, body { width: 100%; height: 100%; }
 /* To remove the scrollbars */
-canvas { display:block; }
 
-
+#the-canvas {
+  margin: 0 0 0 30px;
+  display: block;
+}
 #overlay-prev {
   top: 0;
   left: 0;
@@ -68,5 +70,11 @@ canvas { display:block; }
   width: 30px;
   background: #ccc;
   text-align: center;
+}
+#footer-bar {
+  bottom: 2px;
+  right: 10px;
+  position: fixed;
+  height: 25px;
 }
 
