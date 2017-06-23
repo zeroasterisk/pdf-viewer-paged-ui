@@ -23,6 +23,13 @@
 - [viewerjs](http://viewerjs.org/)
 - google drive for hosting (easy and known to users)
 
+### Usage
+
+Start up a dev server
+
+    cd <here>
+    python -m http.server 8000
+
 ### People
 
 - Jim musician
